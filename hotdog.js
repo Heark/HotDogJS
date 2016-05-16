@@ -4,9 +4,11 @@ document.addEventListener("error", function(token) {
     console.log("On line" + token.lineNumber);
 });
 /**
- * @param {string} err
- * @return {undefined}
- */
+* Write an error to the console
+*
+* @method throwError
+* @param {String} description of thrown Error
+*/
 function throwError(err) {
     /** @type {string} */
     this.err = err;
@@ -17,8 +19,11 @@ function throwError(err) {
 /** @type {string} */
 hd.name = "HotDog.js";
 /**
- * @return {?}
- */
+* Determines whether object is an array or not.
+*
+* @method Object.prototype.isArray
+* @return {Boolean} Returns true if object is array
+*/
 Object.prototype.isArray = function() {
     if (Object.prototype.toString.call(this) === "[object Array]") {
         return true;
@@ -27,8 +32,11 @@ Object.prototype.isArray = function() {
     }
 };
 /**
- * @return {?}
- */
+* Shuffle's array and returns a random output.
+*
+* @method Object.prototype.shuffle
+* @return {Object} Returns a random output from array
+*/
 Object.prototype.shuffle = function() {
     if (this.isArray() === true) {
         return this[Math.floor(Math.random() * this.length)];
@@ -37,18 +45,21 @@ Object.prototype.shuffle = function() {
     }
 };
 /**
- * @param {Object} c
- * @return {undefined}
- */
+* Converts a string into a variable
+*
+* @method Object.prototype.toVar
+* @param {Object} The contents of the new variable
+*/
 Object.prototype.toVar = function(c) {
-    /** @type {Object} */
-    this.context = c;
-    /** @type {Object} */
+    this.c = c;
     window[this] = c;
 };
 /**
- * @param {?} substring
- * @return {?}
+ * Determine if a string contains a substring or if a array contains a value
+ * 
+ * @method Object.prototype.contains
+ * @param {Object} String or Array
+ * @return {Boolean} Returns true or false
  */
 Object.prototype.contains = function(substring) {
     if (typeof this === "string") {
