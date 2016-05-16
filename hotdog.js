@@ -1,4 +1,3 @@
-
 var hd = new Object;
 document.addEventListener("error", function(token) {
     console.log("On line" + token.lineNumber);
@@ -12,11 +11,11 @@ function throwError(err) {
 }
 hd.name = "HotDog.js";
 /**
-* Determines whether object is an array or not.
-*
-* @function isArray
-* @return {Boolean} Returns true if object is array
-*/
+ * Determines whether object is an array or not.
+ *
+ * @function isArray
+ * @return {Boolean} Returns true if object is array
+ */
 Object.prototype.isArray = function() {
     if (Object.prototype.toString.call(this) === "[object Array]") {
         return true;
@@ -25,12 +24,12 @@ Object.prototype.isArray = function() {
     }
 };
 /**
-* Shuffle's array and returns a random output.
-*
-* @function
-* @name shuffle
-* @return {Object} Returns a random output from array
-*/
+ * Shuffle's array and returns a random output.
+ *
+ * @function
+ * @name shuffle
+ * @return {Object} Returns a random output from array
+ */
 Object.prototype.shuffle = function() {
     if (this.isArray() === true) {
         return this[Math.floor(Math.random() * this.length)];
@@ -82,3 +81,50 @@ Object.prototype.contains = function(substring) {
         }
     }
 };
+/** 
+ * Determine if an Object is a number
+ * 
+ * @function isNum
+ * @return {Boolean} Returns true or false
+ * @example var x = 100;
+var y = "100";
+console.log(x.isNum()); // Will return true
+console.log(y.isNum()); // will return false
+ */
+Object.prototype.isNum = function() {
+    return !isNaN(parseFloat(this)) && isFinite(this);
+};
+/** 
+ * Clear all values from array
+ * 
+ * @function empty
+ * @example var arr = [1, 2, 3, 4, 5];
+arr.empty();
+console.log(arr);
+ * @example [];
+ * 
+ */
+Object.prototype.empty = function() {
+    if (this.isArray() == true) {
+        return this.length = 0
+    } else {
+        throwError("Object is not an Array.")
+    }
+};
+///////// HTML FUNCTIONS /////////
+/** 
+ * Remove HTML features and tags from a string
+ * 
+ * @function empty
+ * @example var str = "<p>Hi I'm a paragraph</p>"
+str.escapeHTML()
+console.log(str);
+ * @example "Hi I'm a paragraph"
+ * 
+ */
+Object.prototype.escapeHTML = function() {  
+    var replacements= {"<": "&lt;", ">": "&gt;","&": "&amp;", """: "&quot;"};                      
+    return text.replace(/[<>&"]/g, function(character) {  
+        return replacements[character];  
+    }); 
+}
