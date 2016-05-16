@@ -115,7 +115,7 @@ Object.prototype.empty = function() {
 /** 
  * Remove HTML features and tags from a string
  * 
- * @function empty
+ * @function escapeHTML
  * @example var str = "<p>Hi I'm a paragraph</p>"
 str.escapeHTML()
 console.log(str);
