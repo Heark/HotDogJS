@@ -123,8 +123,5 @@ console.log(str);
  * 
  */
 Object.prototype.escapeHTML = function() {  
-    var replacements= {"<": "&lt;", ">": "&gt;","&": "&amp;", """: "&quot;"};                      
-    return text.replace(/[<>&"]/g, function(character) {  
-        return replacements[character];  
-    }); 
+    return this.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') ;
 }
