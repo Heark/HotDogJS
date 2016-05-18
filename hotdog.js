@@ -121,39 +121,64 @@ console.log(str.truncate(5))
  * 
  */
 Object.prototype.truncate = function(length) {
-    var tr;
-    if (this.length > length) {
-        tr = this.substring(0, length);
+        var tr;
+        if (this.length > length) {
+            tr = this.substring(0, length);
+        }
+        return tr;
     }
-    return tr;
-}
-/** 
- * Create an HTTP request
- * 
- * @constructor HTTP
- * @param {String} url - url of request
- * @example var str = "I'm a string"
-console.log(str.truncate(5))
- * @example "I'm a"
- * 
- */
- function HTTP( url ) {
-     /** @type {function} */
-     this.get = function() {
-            var phttp = new XMLHttpRequest();
-            phttp.open('GET', url, true);
-            phttp.onreadystatechange = function() {
-                if (phttp.readyState == 4 && phttp.status == "200") {
-                    return phttp.responseText;
-                }
-            };
+    /** 
+     * Create an HTTP request
+     * 
+     * @namespace HTTP
+     * @constructor HTTP
+     * @param {String} url - url of request
+     * @example var str = "I'm a string"
+    console.log(str.truncate(5))
+     * @example "I'm a"
+     * 
+     */
+function HTTP(url) {
+    this.url = url;
+    /** 
+    * Performs a get request on given url;
+     
+    @memberof HTTP 
+    @example var test = new HTTP('http://example.org/examplefile.txt/')
+    test.get();
+    */
+    this.get = function() {
+        var phttp = new XMLHttpRequest();
+        phttp.open('GET', url, true);
+        phttp.onreadystatechange = function() {
+            if (phttp.readyState == 4 && phttp.status == "200") {
+                return phttp.responseText;
+            }
+        };
         phttp.send(null);
-     };
-     /** @type {function} */
-     this.post = function() {
-         
-     }
- }
+    };
+    /**
+     * Performs a put request on given url;
+     
+    @memberof HTTP 
+    @param {String} sends - Post request
+    @example var user_name = new HTTP('http://example.org/exampledatabase.asp');
+    var name = 'bob';
+    user_name.post('&username='+name);
+    */
+    this.post = function(sends) {
+        this.sends = sends;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                console.log(xhttp.responseText);
+            }
+        };
+        xhttp.open("POST", url, true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send(sends);
+    }
+}
 ///////// HTML FUNCTIONS /////////
 /** 
  * Remove HTML features and tags from a string
@@ -165,6 +190,6 @@ console.log(str);
  * @example "Hi I'm a paragraph"
  * 
  */
-Object.prototype.escapeHTML = function() {  
-    return this.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') ;
+Object.prototype.escapeHTML = function() {
+    return this.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
