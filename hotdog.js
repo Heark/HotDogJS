@@ -111,6 +111,48 @@ Object.prototype.empty = function() {
         throwError("Object is not an Array.")
     }
 };
+/** 
+ * Shorten's a string to a given length
+ * 
+ * @function truncate
+ * @example var str = "I'm a string"
+console.log(str.truncate(5))
+ * @example "I'm a"
+ * 
+ */
+Object.prototype.truncate = function(length) {
+    if (this.length > length) {
+        this = this.substring(0, length);
+    }
+    return this;
+}
+/** 
+ * Create an HTTP request
+ * 
+ * @constructor HTTP
+ * @param {String} url - url of request
+ * @example var str = "I'm a string"
+console.log(str.truncate(5))
+ * @example "I'm a"
+ * 
+ */
+ function HTTP( url ) {
+     /** @type {function} */
+     this.get = function() {
+            var phttp = new XMLHttpRequest();
+            phttp.open('GET', url, true);
+            phttp.onreadystatechange = function() {
+                if (phttp.readyState == 4 && phttp.status == "200") {
+                    return phttp.responseText;
+                }
+            };
+        phttp.send(null);
+     };
+     /** @type {function} */
+     this.post = function() {
+         
+     }
+ }
 ///////// HTML FUNCTIONS /////////
 /** 
  * Remove HTML features and tags from a string
