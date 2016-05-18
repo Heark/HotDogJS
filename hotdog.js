@@ -121,10 +121,11 @@ console.log(str.truncate(5))
  * 
  */
 Object.prototype.truncate = function(length) {
+    var tr;
     if (this.length > length) {
-        this = this.substring(0, length);
+        tr = this.substring(0, length);
     }
-    return this;
+    return tr;
 }
 /** 
  * Create an HTTP request
