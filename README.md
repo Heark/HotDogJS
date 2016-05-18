@@ -4,6 +4,12 @@ JavaScript framework for beginners, basically a more advanced Peanut.
 ## Documentation
 ### http://hotdog.bloob.ga/
 
+### npm
+Run the following
+``` 
+npm install hotdog
+```
+
 ### Stable Version CDN
  Include this in the `<head></head>` section of your HTML file.
 ``` html
