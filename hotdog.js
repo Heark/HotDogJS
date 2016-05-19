@@ -1,7 +1,4 @@
 var hd = new Object;
-document.addEventListener("error", function(token) {
-    console.log("On line" + token.lineNumber);
-});
 
 function throwError(err) {
     this.err = err;
@@ -133,9 +130,7 @@ Object.prototype.truncate = function(length) {
      * @namespace HTTP
      * @constructor HTTP
      * @param {String} url - url of request
-     * @example var str = "I'm a string"
-    console.log(str.truncate(5))
-     * @example "I'm a"
+     * @example var ex = new HTTP("http://example.org/")
      * 
      */
 function HTTP(url) {
